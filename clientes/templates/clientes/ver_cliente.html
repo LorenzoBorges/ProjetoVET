@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{%block conteudo%}
+<h1 class="mt-5">{{ cliente.animal }}, {{ cliente.raca }}</h1>
+<dl>
+    <dt>ID</dt>
+    <dd>{{ cliente.id }}</dd>
+
+    <dt>Dono</dt>
+    <dd>{{ cliente.dono }}</dd>
+
+    <dt>Nome do animal</dt>
+    <dd>{{ cliente.animal }}</dd>
+
+    <dt>Espécie</dt>
+    <dd>{{ cliente.especie }}</dd>
+
+    <dt>Raça</dt>
+    <dd>{{ cliente.raca }}</dd>
+
+    <dt>Peso</dt>
+    <dd>{{ cliente.peso }}</dd>
+
+    <dt>Idade</dt>
+    <dd>{{ cliente.idade }}</dd>
+
+    <dt>Telefone</dt>
+    <dd>{{ cliente.telefone }}</dd>
+
+    <dt>E-mail</dt>
+    <dd>{{ cliente.email }}</dd>
+
+    <dt>Data criação</dt>
+    <dd>{{ cliente.data_criacao|date:'d/m/Y' }}</dd>
+
+    <dt>Plano</dt>
+    <dd>{{ cliente.plano }}</dd>
+
+    {% if cliente.descricao %}
+    <dt>Descrição</dt>
+    <dd>{{ cliente.descricao }}</dd>
+    {% endif %}
+
+{% if cliente.vacina_set.all or cliente.consulta_set.all or cliente.cirurgia_set.all%}
+<h1 class="mt-5">Histórico</h1>
+
+    {% if cliente.vacina_set.all%}
+    <dt>Vacinas</dt>
+
+    {% for vacina in cliente.vacina_set.all %}
+    <thead>
+        <tr>
+            <td>{{ vacina.vacina }}</td>
+            <td>{{ vacina.data }}<br></td>
+        </tr>
+    </thead>
+    {% endfor %}
+    {% endif %}
+
+    {% if cliente.consulta_set.all%}
+    <dt>Consultas</dt>
+
+    {% for consulta in cliente.consulta_set.all %}
+    <thead>
+        <tr>
+            <td>{{ consulta.consulta }}</td>
+            <td>{{ consulta.data }}<br></td>
+        </tr>
+    </thead>
+    {% endfor %}
+    {% endif %}
+
+    {% if cliente.cirurgia_set.all%}
+    <dt>Cirurgias</dt>
+
+    {% for cirurgia in cliente.cirurgia_set.all %}
+    <thead>
+        <tr>
+            <td>{{ cirurgia.cirurgia }}</td>
+            <td>{{ cirurgia.data }}<br></td>
+        </tr>
+    </thead>
+    {% endfor %}
+    {% endif %}
+
+</dl>
+
+{% endif %}
+{%endblock%}
