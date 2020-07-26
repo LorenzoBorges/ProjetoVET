@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {%block conteudo%}
-<h1 class="mt-5">Meus clientes</h1>
+<h1 class="mt-5">Meus clientes :)</h1>
 
 <table class="table">
     <thead>
@@ -15,17 +15,17 @@
     <tbody>
 
         {% for cliente in clientes %}
-            {% if cliente.mostrar %}
-                <tr>
-                    <td>
-                        <a href="{% url 'ver_cliente' cliente.id %}">{{ cliente.animal }}</a>
-                    </td>
-                    <td>{{ cliente.raca }}</td>
-                    <td>{{ cliente.dono }}</td>
-                    <td>{{ cliente.telefone }}</td>
-                    <td>{{ cliente.plano }}</td>
-                </tr>
-            {% endif %}
+        {% if cliente.mostrar %}
+        <tr>
+            <td>
+                <a href="{% url 'ver_cliente' cliente.id %}">{{ cliente.animal }}</a>
+            </td>
+            <td>{{ cliente.raca }}</td>
+            <td>{{ cliente.dono }}</td>
+            <td>{{ cliente.telefone }}</td>
+            <td>{{ cliente.plano }}</td>
+        </tr>
+        {% endif %}
         {% endfor %}
 
     </tbody>
