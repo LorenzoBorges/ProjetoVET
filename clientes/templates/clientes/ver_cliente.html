@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{%block conteudo%}
+{%block conteudo-direita%}
 <h1 class="mt-5">{{ cliente.animal }}, {{ cliente.raca }}</h1>
 <dl>
     <dt>ID</dt>
@@ -41,7 +41,7 @@
     <dd>{{ cliente.descricao }}</dd>
     {% endif %}
 
-    {% if cliente.vacina_set.all or cliente.consulta_set.all or cliente.cirurgia_set.all %}
+    {% if cliente.vacina_set.all or cliente.consulta_set.all or cliente.cirurgia_set.all%}
     <h1 class="mt-5">Histórico</h1>
 
     {% if cliente.vacina_set.all%}

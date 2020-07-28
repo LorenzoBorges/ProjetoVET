@@ -1,49 +1,68 @@
 {% extends 'base.html' %}
-{%block conteudo%}
-<h1 class="mt-5">Meus clientes :)</h1>
 
-<table class="table">
-    <thead>
-        <tr>
-            <!--<th>ID</th>-->
-            <th>Animal</th>
-            <th>Raça</th>
-            <th>Dono</th>
-            <th>Telefone</th>
-            <th>Plano</th>
-        </tr>
-    </thead>
-    <tbody>
+{% block conteudo-esquerda %}
+<div class="home_page-esquerda">
+    <section class="botao" style="margin-top: 35px;">
+        <a class="botao-esquerda" href="#">+</a>
+        <div class="botao-direita">
+            <a href="#">Consulta</a>
+            <a href="#">Animal</a>
+            <a href="#">Responsável</a>
+            <a href="#">Plano</a>
+        </div> 
+    </section>
+    <section>
+        <a class="links-principais" href="#">Agenda</a>
+    </section>
+    <section>
+        <a class="links-principais" href="#">Histórico</a>
+    </section>
+    <section>
+        <a class="links-principais-especial" href="#">Animais cadastrados</a>
+    </section>
+    <section>
+        <a class="links-principais" href="#">Responsáveis cadastrados</a>
+    </section>
+    <section>
+        <a class="links-principais" href="#">Tipos de plano</a>
+    </section>
+</div>
+{% endblock %}
 
-        {% for cliente in clientes %}
-        <tr>
-            <!--<td>{{ cliente.id }}</td>-->
-            <td>
-                <a href="{% url 'ver_cliente' cliente.id %}">{{ cliente.animal }}</a>
-            </td>
-            <td>{{ cliente.raca }}</td>
-            <td>{{ cliente.dono }}</td>
-            <td>{{ cliente.telefone }}</td>
-            <td>{{ cliente.plano }}</td>
-        </tr>
-        {% endfor %}
+{%block conteudo-direita%}
+<div class="home_page-direita">
+    <section class="titulo">
+        <p>Animal</p>
+        <p>Espécie</p>
+        <p>Raça</p>
+        <p>Responsável</p>
+        <p>Telefone</p>
+        <p>Plano</p>
+        <p>Última consulta</p>
+    </section>
+    {% for cliente in clientes %}
+    {% if cliente.mostrar %}
+    <section>
+        <p>
+            <a href="{% url 'ver_cliente' cliente.id %}">{{cliente.animal}}</a>
+        </p>
+        <p>
+            <a href="#">{{cliente.especie}}</a>
+        </p>
+        <p>
+            <a href="#">{{cliente.raca}}</a>
+        </p>
+        <p>
+            <a href="#">{{cliente.dono}}</a>
+        </p>
+        <p>{{cliente.telefone}}</p>
+        <p> {{cliente.plano}} </p>
+        <p>
+            <a href="#"> DATA </a>
+        </p>
+    </section>
+    {% endif %}
+    {% endfor %}
+</div>
 
-    </tbody>
-</table>
-
-<nav aria-label="Page navigation example">
-    <ul class="pagination">
-        {% for pagina in clientes.paginator.page_range %}
-            {% if clientes.number == pagina %}
-                <li class="page-item active">
-                    <a class="page-link" href="?p={{ pagina }}">{{pagina}}</a>
-                </li>
-            {% else %}
-                <li class="page-item">
-                    <a class="page-link" href="?p={{ pagina }}">{{pagina}}</a>
-                </li>
-            {% endif %}
-        {% endfor %}
-    </ul>
-</nav>
 {%endblock%}

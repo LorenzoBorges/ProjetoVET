@@ -1,12 +1,14 @@
 {% load static %}
 
-<!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-    <div class="container">
-        <a class="navbar-brand" href="{% url 'index' %}">Veterinária PET EEL</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+<head>
+    <div class="navbar">
+        <div class="navbar-esquerda">
+            <a href="{% url 'index' %}" class="fa fa-bars"></a>
+            <a href="{% url 'index' %}">VET</a> </div>
+        <input type="text" placeholder="Pesquisar">
+        <div class="navbar-direita">
+            <a href="#" class="fa fa-gear"></a>
+            <a href="#" class="fa fa-sort-down"></a>
+        </div>
     </div>
-</nav>
+</head>
