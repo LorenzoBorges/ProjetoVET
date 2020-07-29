@@ -2,8 +2,14 @@
 
 {% block conteudo-esquerda %}
 <div class="home_page-esquerda">
-    <section>
-        <a class="botao" href="#">+</a>
+    <section class="botao" style="margin-top: 35px;">
+        <a class="botao-esquerda" href="#">+</a>
+        <div class="botao-direita">
+            <a href="#">Consulta</a>
+            <a href="#">Animal</a>
+            <a href="#">Responsável</a>
+            <a href="#">Plano</a>
+        </div> 
     </section>
     <section>
         <a class="links-principais" href="#">Agenda</a>
@@ -12,7 +18,7 @@
         <a class="links-principais" href="#">Histórico</a>
     </section>
     <section>
-        <a class="links-principais" href="#">Animais cadastrados</a>
+        <a class="links-principais-especial" href="#">Animais cadastrados</a>
     </section>
     <section>
         <a class="links-principais" href="#">Responsáveis cadastrados</a>
@@ -23,37 +29,29 @@
 </div>
 {% endblock %}
 
-{% block conteudo-direita %}
+{%block conteudo-direita%}
 <div class="home_page-direita">
-    <section>
-        <p>Espécie</p>
+    <section class="titulo">
+        <p>Vacina</p>
         <p>Animal</p>
-        <p>Raça</p>
+        <p>Data</p>
         <p>Responsável</p>
-        <p>Telefone</p>
-        <p>Plano</p>
-        <p>Última consulta</p>
     </section>
+    {% for vacina in vacinas %}
     <section>
         <p>
-            <a href="#">Cão</a>
+            <a href="#">{{vacina.vacina}}</a>
         </p>
         <p>
-            <a href="#">Pitoco</a>
+            <a href="#">{{vacina.animal}}</a>
         </p>
         <p>
-            <a href="#">Shitzu</a>
+            <a href="#">{{vacina.data}}</a>
         </p>
         <p>
-            <a href="#">Gabriela</a>
+            <a href="#">dono</a>
         </p>
-        <p>(47) 98832-4188</p>
-        <p>
-            <a href="#">VIP</a>
-        </p>
-        <p>
-            <a href="#">22/04/2020</a>
-        </p>
-    </section>
+    {% endfor %}
 </div>
-{% endblock %}
+
+{%endblock%}

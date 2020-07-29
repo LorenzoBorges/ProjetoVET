@@ -25,6 +25,13 @@ class Cliente(models.Model):
     def __str__(self):
         return self.animal
 
+# class Intermediario(models.Model):
+#     dono = models.CharField(max_length=255)
+#     dupla_vacina = models.ManyToManyField(Cliente, through='Vacina')
+
+#     def __str__(self):
+#         return self.dono
+
 class Vacina(models.Model):
     animal = models.ForeignKey(Cliente, on_delete=models.CASCADE)
     vacina = models.CharField(max_length=255)
