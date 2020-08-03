@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{%block conteudo%}
+<h1 class="mt-5">Vacinas</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Animal</th>
+            <th>Vacina</th>
+            <th>Data</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        {% for vacina in x %}
+        <tr>
+            <!--<td>
+                <a href="{% url 'ver_cliente' cliente.id %}">{{ vacina.animal }}</a>
+            </td>-->
+            <td>{{ vacina.vacina }}</td>
+            <td>{{ vacina.data }}</td>
+        </tr>
+        {% endfor %}
+
+    </tbody>
+</table>
+{%endblock%}

@@ -41,8 +41,8 @@
     <dd>{{ cliente.descricao }}</dd>
     {% endif %}
 
-{% if cliente.vacina_set.all or cliente.consulta_set.all or cliente.cirurgia_set.all%}
-<h1 class="mt-5">Histórico</h1>
+    {% if cliente.vacina_set.all or cliente.consulta_set.all or cliente.cirurgia_set.all %}
+    <h1 class="mt-5">Histórico</h1>
 
     {% if cliente.vacina_set.all%}
     <dt>Vacinas</dt>
